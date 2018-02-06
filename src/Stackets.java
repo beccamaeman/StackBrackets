@@ -11,26 +11,54 @@
 * Output:	describe the result of your program
 ***********************************************************************/
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Stackets{//begin class
     
-    public static void main(String args[]){//begin main
+    public static void main(String args[])throws IOException {//begin main
         
 	//*****declaration of constants*****
 	
 	//*****declaration of variables*****
         
-            String bal = "({[]})";
-            String unb = "{[)}";
-
-	//*****create objects*****
-		
-	//*****create input stream*****
-	
-        //*****get input*****
-	
-	//*****processing*****
-
+            String strin = "";
+            
+        //*****create objects*****
+            
             PrintBanner();
+        
+            Stack stackets = new Stack();
+            
+            BufferedReader fin = new BufferedReader(new FileReader("input.txt"));
+		
+	//*****get input*****
+        
+            strin = fin.readLine();         //read first line from input buffer
+            System.out.println(strin);      //echo the input
+            
+        //*****processing*****
+        
+            while(strin != null){
+                
+                String[] brackets = strin.split("");
+                stackets.push(brackets[0]);
+                
+                for(int b = 1; b < brackets.length; b++){
+                    
+                    if(brackets[b] == "(" || brackets[b] == "{" || brackets[b] == "[")
+                        stackets.push(brackets[b]);
+                    else
+                        stackets.pop();
+                        
+                }//end main nested for int b
+                
+                strin = fin.readLine();
+                System.out.println(strin);    //echo the input
+            }//end while strin != null
+            
+            
 	
 	//*****output*****
 	
@@ -54,7 +82,7 @@ public class Stackets{//begin class
     }//end PrintBanner method
     
     /****************************************
-    * print closing message to outout window
+    * print closing message to output window
     * IN: none
     * OUT: none
     ****************************************/
