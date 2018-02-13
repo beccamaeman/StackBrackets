@@ -36,17 +36,16 @@ public class Stackets{//begin class
 	//*****get input*****
         
             strin = fin.readLine();         //read first line from input buffer
-            //System.out.println(strin);      //echo the input
+            System.out.println(strin);      //echo the input
             
         //*****processing*****
-        
+            
             while(strin != null){
                 
                 String[] brackets = strin.split("");
-                stackets.push(brackets[0]);
                 
                 if(brackets[0].equals(")") || brackets[0].equals("}") || brackets[0].equals("]"))
-                    System.out.println("Unbalanced`");
+                    System.out.println("Unbalanced");
                 else{
                     for(int b = 0; b < brackets.length; b++){
                     
@@ -71,8 +70,9 @@ public class Stackets{//begin class
                             else
                                 stackets.push("unb");
                         }//end else if ]
-                        else
+                        else{
                             stackets.push(brackets[b]);
+                        }//push else
                     }//end main nested for int b
                     
                     Boolean isEmpty = stackets.isEmpty();
@@ -84,8 +84,9 @@ public class Stackets{//begin class
                     
                 }//end run program else
                 
+                System.out.println("\n");
                 strin = fin.readLine();
-                //System.out.println(strin);    //echo the input
+                System.out.println(strin);    //echo the input
             }//end while strin != null
             
         //*****output*****
